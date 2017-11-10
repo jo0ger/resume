@@ -12,13 +12,14 @@ const prefix = require('gulp-autoprefixer')
 const minify = require('gulp-minify-css')
 const uglify = require('gulp-uglify')
 const rename = require('gulp-rename')
+const htmlmin = require('gulp-htmlmin')
 const browserSync = require('browser-sync').create()
 
 // Static server
 gulp.task('browserSync', function () {
   browserSync.init({
     server: {
-      baseDir: './'
+      baseDir: 'dist'
     }
   })
 })
@@ -49,9 +50,16 @@ gulp.task('compressJS', function () {
     .pipe(browserSync.stream())
 })
 
-// Watch files for changes & recompile
-gulp.task('watch', function () {
-  gulp.watch(['style/*.styl'], ['compressCSS'], ['compressJS'])
+gulp.task('compressHtml', function() {
+  return gulp.src('index.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.stream())
 })
 
-gulp.task('default', ['compressCSS', 'compressJS', 'browserSync', 'watch'])
+// Watch files for changes & recompile
+gulp.task('watch', function () {
+  gulp.watch(['style/*.styl'], ['compressCSS'], ['compressJS'], ['compressHtml'])
+})
+
+gulp.task('default', ['compressCSS', 'compressJS', 'compressHtml', 'browserSync', 'watch'])
