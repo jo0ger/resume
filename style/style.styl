@@ -116,96 +116,6 @@ p a {
 	margin: 6pt 0 6pt;
 }
 
-.skills {
-  .skill-item {
-    position relative
-    animation-delay 500ms
-    animation-duration 1500ms
-
-    &.js {
-      width ($js)%
-      animation-name bar-js
-    }
-
-    &.css {
-      width ($css)%
-      animation-name bar-css
-
-      .name {
-        background-color: alpha(#2B8CD2, .1);
-        border-color: alpha(#2B8CD2, .8);  
-        color: #2B8CD2;
-      }
-    }
-
-    &.vue {
-      width ($vue)%
-      animation-name bar-vue
-
-      .name {
-        background-color: alpha(#42b983, .1);
-        border-color: alpha(#42b983, .8);  
-        color: #42b983;
-      }
-    }
-
-    &.node {
-      width ($node)%
-      animation-name bar-node
-
-      .name {
-        background-color: alpha(#2f6b1c, .1);
-        border-color: alpha(#2f6b1c, .8);  
-        color: #2f6b1c;
-      }
-    }
-
-    &.react {
-      width ($react)%
-      animation-name bar-react
-
-      .name {
-        background-color: alpha(#61dafb, .1);
-        border-color: alpha(#61dafb, .8);  
-        color: #61dafb;
-      }
-    }
-
-    .name {
-      height: 1cm;
-      line-height: @height;
-      padding-left: 8pt;
-      border-left: 3px solid;
-      overflow: hidden;
-      background-color: #fff6dd;
-      border-color: #fdbc40;
-      color: #ff742a;  
-    }
-
-    &:hover {
-      .detail {
-        display: block
-      }
-    }
-  }
-  .detail {
-    position: absolute;
-    display: none;
-    right: 0;
-    top: 0;
-    z-index: 9999;
-    max-width: 10cm;
-    padding: 8pt;
-    background: rgba(255, 255, 255, .8);
-    box-shadow: 0 0 3px rgba(0, 0, 0, .2);
-    border-radius: 4px;
-
-    p {
-      margin-bottom 0
-    }
-  }
-}
-
 /* ----------------------------------------------------------- */
 
 
@@ -233,6 +143,96 @@ p a {
 		border-bottom-right-radius: 3px;
 	}
 	.download-button:hover {
+	}
+
+	.skills {
+		.skill-item {
+			position relative
+			animation-delay 500ms
+			animation-duration 1500ms
+
+			&.js {
+				width ($js)%
+				animation-name bar-js
+			}
+
+			&.css {
+				width ($css)%
+				animation-name bar-css
+
+				.name {
+					background-color: alpha(#2B8CD2, .1);
+					border-color: alpha(#2B8CD2, .8);  
+					color: #2B8CD2;
+				}
+			}
+
+			&.vue {
+				width ($vue)%
+				animation-name bar-vue
+
+				.name {
+					background-color: alpha(#42b983, .1);
+					border-color: alpha(#42b983, .8);  
+					color: #42b983;
+				}
+			}
+
+			&.node {
+				width ($node)%
+				animation-name bar-node
+
+				.name {
+					background-color: alpha(#2f6b1c, .1);
+					border-color: alpha(#2f6b1c, .8);  
+					color: #2f6b1c;
+				}
+			}
+
+			&.react {
+				width ($react)%
+				animation-name bar-react
+
+				.name {
+					background-color: alpha(#61dafb, .1);
+					border-color: alpha(#61dafb, .8);  
+					color: #61dafb;
+				}
+			}
+
+			.name {
+				height: 1cm;
+				line-height: @height;
+				padding-left: 8pt;
+				border-left: 3px solid;
+				overflow: hidden;
+				background-color: #fff6dd;
+				border-color: #fdbc40;
+				color: #ff742a;  
+			}
+
+			&:hover {
+				.detail {
+					display: block
+				}
+			}
+		}
+		.detail {
+			position: absolute;
+			display: none;
+			right: 0;
+			top: 0;
+			z-index: 9999;
+			max-width: 10cm;
+			padding: 8pt;
+			background: rgba(255, 255, 255, .8);
+			box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+			border-radius: 4px;
+
+			p {
+				margin-bottom 0
+			}
+		}
 	}
 }
 

@@ -14,7 +14,8 @@ const uglify = require('gulp-uglify')
 const rename = require('gulp-rename')
 const htmlmin = require('gulp-htmlmin')
 const browserSync = require('browser-sync').create()
-
+const isDev = process.env.NODE_ENV === 'development'
+console.log(isDev)
 // Static server
 gulp.task('browserSync', function () {
   browserSync.init({
@@ -57,9 +58,11 @@ gulp.task('compressHtml', function() {
     .pipe(browserSync.stream())
 })
 
-// Watch files for changes & recompile
+// Watch files for changes & recompile, only for dev env
 gulp.task('watch', function () {
-  gulp.watch(['style/*.styl'], ['compressCSS'], ['compressJS'], ['compressHtml'])
+  if (isDev) {
+    gulp.watch(['style/*.styl'], ['compressCSS'], ['compressJS'], ['compressHtml'])
+  }
 })
 
 gulp.task('default', ['compressCSS', 'compressJS', 'compressHtml', 'browserSync', 'watch'])

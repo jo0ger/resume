@@ -7,6 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
+    "dev": "cross-env NODE_ENV=development gulp",
     "deploy": "pm2 deploy ecosystem.config.js production"
   },
   "repository": {
@@ -24,6 +25,7 @@
   "homepage": "https://github.com/jo0ger/resume#readme",
   "devDependencies": {
     "browser-sync": "^2.18.13",
+    "cross-env": "^5.1.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-htmlmin": "^3.0.0",
