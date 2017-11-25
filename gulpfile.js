@@ -1,6 +1,6 @@
 /**
- * @desc 
- * @author Jooger <zzy1198258955@163.com>
+ * @desc Gulp Gulp，give me a job 🙏
+ * @author Jooger <iamjooger@gmail.com>
  * @date 10 Nov 2017
  */
 
@@ -27,12 +27,12 @@ gulp.task('browserSync', function () {
 
 // Build css files
 gulp.task('compressCSS', function () {
-  gulp.src('style/style.styl')
+  gulp.src('style/index.styl')
     .pipe(stylus())
     .pipe(prefix(['last 15 versions', '> 1%'], {
       cascade: true
     }))
-    .pipe(minify())
+    // .pipe(minify())
     .pipe(rename({
       suffix: '.min'
     }))
@@ -51,21 +51,27 @@ gulp.task('compressJS', function () {
     .pipe(browserSync.stream())
 })
 
-gulp.task('compressHtml', function() {
+// Compress html
+gulp.task('compressHtml', function () {
   return gulp.src('index.html')
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest('dist'))
     .pipe(browserSync.stream())
 })
 
+gulp.task('moveFonts', function () {
+  return gulp.src('fonts/*')
+    .pipe(gulp.dest('dist/fonts'))
+})
+
 // Watch files for changes & recompile, only for dev env
-if (isDev) {
-  gulp.task('watch', function () {
-    gulp.watch(['style/*.styl'], ['compressCSS'], ['compressJS'], ['compressHtml'])
-  })
-}
+gulp.task('watch', function () {
+  gulp.watch(['style/*.styl'], ['compressCSS'])
+  gulp.watch(['script/*.js'], ['compressJS'])
+  gulp.watch(['index.html'], ['compressHtml'])
+})
 
 gulp.task(
   'default',
-   ['compressCSS', 'compressJS', 'compressHtml'].concat(isDev ? ['browserSync', 'watch'] : [])
+   ['compressCSS', 'compressJS', 'compressHtml', 'moveFonts'].concat(isDev ? ['browserSync', 'watch'] : [])
 )

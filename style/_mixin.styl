@@ -1,0 +1,76 @@
+flexLayout(dir = row, justify-content = center, align-items = center, iswrap = nowrap) {
+  display flex
+  flex-direction dir
+  justify-content justify-content
+  align-items align-items
+  flex-wrap iswrap
+}
+
+// Media query
+print() {
+  @media print {
+    {block}
+  }
+}
+respond-below($width) {
+  $media = 'all and (max-width: %s)' % $width
+  @media $media {
+    {block}
+  }
+}
+
+respond-above($width) {
+  $media = 'all and (min-width: %s)' % $width
+  @media $media {
+    {block}
+  }
+}
+
+respond-between($min-width, $max-width) {
+  $media = 'all and (min-width: %s) and (max-width: %s)' % ($min-width $max-width)
+  @media $media {
+    {block}
+  }
+}
+
+// < 480
+xxs() {
+  +respond-below($screen-xs-min - 1) {
+    {block}
+  }
+}
+
+// >= 480 & < 768
+xs() {
+  +respond-between($screen-xs-min, $screen-xs-max) {
+    {block}
+  }
+}
+
+// >= 768 & < 992
+sm() {
+  +respond-between($screen-sm-min, $screen-sm-max) {
+    {block}
+  }
+}
+
+// >= 992 & <1200
+md() {
+  +respond-between($screen-md-min, $screen-md-max) {
+    {block}
+  }
+}
+
+// >= 1200 & < 1600
+lg() {
+  +respond-between($screen-lg-min, $screen-lg-max) {
+    {block}
+  }
+}
+
+// >= 1600
+xl() {
+  +respond-above($screen-xl-min) {
+    {block}
+  }
+}
