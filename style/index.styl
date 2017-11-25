@@ -39,6 +39,25 @@ a {
   text-decoration none
   outline none
   cursor pointer
+  transition all .3s ease
+}
+
+.download-btn {
+  display block
+  width 100%
+  padding 1em 2em
+  background $base-color
+  font-size 1.2em
+  text-align center
+  color $white
+
+  &:hover {
+    background alpha($base-color, .8)
+  }
+}
+
+.container {
+  margin 2em 0 5em
 }
 
 .header {
